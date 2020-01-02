@@ -93,4 +93,5 @@ background: rgba(252, 252, 252, 1) !important;
 
 card-img{
     max-height:75px;
+    min-height:75px;
 }
