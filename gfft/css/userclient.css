@@ -90,3 +90,7 @@ background: rgba(252, 252, 252, 1) !important;
 .footer-container {
  background-color: #8c8c8c;
 }
+
+card-img{
+    max-height:75px;
+}
