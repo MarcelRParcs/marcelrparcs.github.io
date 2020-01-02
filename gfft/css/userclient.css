@@ -92,7 +92,6 @@ background: rgba(252, 252, 252, 1) !important;
 }
 
 .card-img{
-    width: 100%;
+    width:5vw;
     height: 5vw;
-    object-fit: cover;
 }
