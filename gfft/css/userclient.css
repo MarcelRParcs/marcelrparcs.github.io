@@ -72,6 +72,7 @@ html {
     line-height: 1.6em;
   }
 
+/* HEADER */
 .sticky-top {
 background: rgba(252, 252, 252, 1) !important;
 }
@@ -79,6 +80,10 @@ background: rgba(252, 252, 252, 1) !important;
 .nav a{
     font-size: 1.8em !important;
     }
+
+li.nav-item {
+    border-right: 1px solid black;
+}
 
 .container {
     padding-right: 15px;
