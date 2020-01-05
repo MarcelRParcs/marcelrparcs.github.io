@@ -77,12 +77,16 @@ html {
 background: rgba(252, 252, 252, 1) !important;
 }
 
-.nav a{
+.nav a {
     font-size: 1.8em !important;
-    }
+ }
 
 .nav-pills .nav-link {
     border-radius: 0rem;
+}
+
+.nav-pills>li+li {
+    margin-left: 0px;
 }
 
 li.nav-item {
