@@ -82,6 +82,7 @@ background: rgba(252, 252, 252, 1) !important;
  }
 
 .nav-pills .nav-link {
+    background-color:red;
     border-radius: 0rem;
 }
 
