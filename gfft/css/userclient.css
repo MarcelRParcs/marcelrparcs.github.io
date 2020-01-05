@@ -81,6 +81,10 @@ background: rgba(252, 252, 252, 1) !important;
     font-size: 1.8em !important;
     }
 
+.nav-pills .nav-link {
+    border-radius: 0rem;
+}
+
 li.nav-item {
     border-right: 1px solid black;
 }
