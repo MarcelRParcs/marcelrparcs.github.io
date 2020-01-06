@@ -120,3 +120,10 @@ li.nav-item {
     max-height:75px;
     min-height:75px;
 }
+
+/*BR space */
+br {
+            display: block; /* makes it have a width */
+            content: ""; /* clears default height */
+            margin-top: 5; /* change this to whatever height you want it */
+}
