@@ -97,6 +97,7 @@ background: rgba(252, 252, 252, 1) !important;
 }
 
 li.nav-item {
+    border-top: 1px solid black;
     border-right: 1px solid black;
     border-bottom: 1px solid black;
 }
