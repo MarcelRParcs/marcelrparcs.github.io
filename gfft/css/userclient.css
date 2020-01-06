@@ -77,6 +77,9 @@ html {
 background: rgba(252, 252, 252, 1) !important;
 }
 
+#_Topbar_ {
+     background-size: 100% 100%;
+}
 .nav a {
     font-size: 1.8em !important;
  }
@@ -116,4 +119,11 @@ li.nav-item {
 .card-img{
     max-height:75px;
     min-height:75px;
+}
+
+/*BR space */
+br {
+            display: block; /* makes it have a width */
+            content: ""; /* clears default height */
+            margin-top: 5; /* change this to whatever height you want it */
 }
