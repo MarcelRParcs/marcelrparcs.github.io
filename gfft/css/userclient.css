@@ -89,7 +89,7 @@ background: rgba(252, 252, 252, 1) !important;
 }
 
 .nav-pills .nav-link.active{
-    background-color: red;
+    background-color: grey;
 }
 
 .nav-pills>li+li {
