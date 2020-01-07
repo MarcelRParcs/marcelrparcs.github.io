@@ -115,12 +115,17 @@ li.nav-item {
 .footer-container {
  background-color: #8c8c8c;
 }
-
+/*CARD*/
 .card-img{
     max-height:100px;
     min-height:100px;
     max-width:100px;
     min-width:100px;
+}
+
+.text-center {
+    align-items: center;
+    text-align: center!important;
 }
 
 #countdownText {
