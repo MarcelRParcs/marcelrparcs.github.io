@@ -119,6 +119,8 @@ li.nav-item {
 .card-img{
     max-height:100px;
     min-height:100px;
+    max-width:100px;
+    min-width:100px;
 }
 
 /*BR space */
