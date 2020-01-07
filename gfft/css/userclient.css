@@ -123,6 +123,10 @@ li.nav-item {
     min-width:100px;
 }
 
+#countdownText {
+ font-size:16;
+}
+
 /*BR space */
 br {
             display: block; /* makes it have a width */
