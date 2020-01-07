@@ -117,8 +117,8 @@ li.nav-item {
 }
 
 .card-img{
-    max-height:75px;
-    min-height:75px;
+    max-height:100px;
+    min-height:100px;
 }
 
 /*BR space */
