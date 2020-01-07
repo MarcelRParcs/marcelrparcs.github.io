@@ -49,8 +49,8 @@ html {
 }
 
 .slider::-moz-range-thumb {
-  width: 25px;
-  height: 25px;
+  width: 30px;
+  height: 30px;
   border-radius: 50%;
   background: #4CAF50;
   cursor: pointer;
@@ -115,12 +115,21 @@ li.nav-item {
 .footer-container {
  background-color: #8c8c8c;
 }
-
+/*CARD*/
 .card-img{
     max-height:100px;
     min-height:100px;
     max-width:100px;
     min-width:100px;
+}
+
+.text-center {
+    align-items: center;
+    text-align: center!important;
+}
+
+#countdownText {
+ font-size:16px;
 }
 
 /*BR space */
