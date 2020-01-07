@@ -71,7 +71,11 @@ html {
     text-align: center;
     line-height: 1.6em;
   }
-
+/*CARD*/
+.card-body {
+    padding: 0;
+}
+#SessionsNotVotedHTMLContents > div:nth-child(6) > div:nth-child(1) > div
 /* HEADER */
 .sticky-top {
 background: rgba(252, 252, 252, 1) !important;
