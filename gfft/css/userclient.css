@@ -41,8 +41,8 @@ html {
 .slider::-webkit-slider-thumb {
   -webkit-appearance: none;
   appearance: none;
-  width: 25px;
-  height: 25px;
+  width: 30px;
+  height: 50px;
   border-radius: 50%; 
   background: #4CAF50;
   cursor: pointer;
