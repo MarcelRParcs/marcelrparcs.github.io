@@ -123,6 +123,14 @@ li.nav-item {
     min-width:100px;
 }
 
+questionCard {
+ 
+    max-height:150px;
+    min-height:150px;
+    max-width:100px;
+    min-width:100px;
+}
+
 .text-center {
     align-items: center;
     text-align: center!important;
