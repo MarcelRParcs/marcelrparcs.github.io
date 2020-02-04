@@ -26,35 +26,78 @@ html {
 }
 
 /* The slider itself */
-.slider {
-  -webkit-appearance: none;
-  width: 100%;
-  height: 15px;
-  border-radius: 5px;  
-  background: #d3d3d3;
-  outline: none;
-  opacity: 0.7;
-  -webkit-transition: .2s;
-  transition: opacity .2s;
+.slider[type=range] {
+	 -webkit-transition: 0.2s;
+	 -webkit-appearance: none;
+	 appearance: none;
+	 width: 100%;
+	 height: 25px;
+	 background-color: transparent;
+	 outline: none;
+	 opacity: 0.7;
+	 transition: opacity 0.2s;
+	 cursor: pointer;
 }
-
-.slider::-webkit-slider-thumb {
-  -webkit-appearance: none;
-  appearance: none;
-  width: 30px;
-  height: 50px;
-  border-radius: 50%; 
-  background: #4CAF50;
-  cursor: pointer;
+ .slider[type=range]:hover, .slider[type=range]:focus, .slider[type=range]:active {
+	 opacity: 1;
 }
-
-.slider::-moz-range-thumb {
-  width: 30px;
-  height: 30px;
-  border-radius: 50%;
-  background: #4CAF50;
-  cursor: pointer;
+ .slider[type=range]::-webkit-slider-runnable-track {
+	 -webkit-appearance: none;
+	 height: 6px;
+	 border-radius: 3px;
+	 background-color: #d3d3d3;
+	 appearance: none;
 }
+ .slider[type=range]::-webkit-slider-thumb {
+	 -webkit-appearance: none;
+	 width: 30px;
+	 height: 30px;
+	 border-radius: 12.5px;
+	 background-color: #33a2d9;
+	 appearance: none;
+	 margin-top: -9.5px;
+}
+ .slider[type=range]::-moz-range-track {
+	 height: 6px;
+	 border-radius: 3px;
+	 background-color: #d3d3d3;
+	 appearance: none;
+}
+ .slider[type=range]::-moz-range-thumb {
+	 width: 30px;
+	 height: 30px;
+	 border-radius: 12.5px;
+	 background-color: #33a2d9;
+	 appearance: none;
+	 margin-top: 0;
+}
+ .slider[type=range]::-ms-track {
+	 height: 6px;
+	 border-radius: 3px;
+	 background-color: #d3d3d3;
+	 appearance: none;
+}
+ .slider[type=range]::-ms-fill-upper {
+	 height: 6px;
+	 border-radius: 3px;
+	 background-color: #d3d3d3;
+	 appearance: none;
+}
+ .slider[type=range]::-ms-fill-lower {
+	 height: 6px;
+	 border-radius: 3px;
+	 background-color: #d3d3d3;
+	 appearance: none;
+}
+ .slider[type=range]::-ms-thumb {
+	 width: 25px;
+	 height: 25px;
+	 border-radius: 12.5px;
+	 background-color: #33a2d9;
+	 appearance: none;
+	 margin-top: 0;
+}
+ 
 
 
 ::-webkit-scrollbar {
@@ -123,6 +166,7 @@ li.nav-item {
     min-width:100px;
 }
 
+
 .text-center {
     align-items: center;
     text-align: center!important;
@@ -136,5 +180,5 @@ li.nav-item {
 br {
             display: block; /* makes it have a width */
             content: ""; /* clears default height */
-            margin-top: 5; /* change this to whatever height you want it */
+            margin-top: 5px; /* change this to whatever height you want it */
 }
