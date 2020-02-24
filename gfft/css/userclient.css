@@ -118,6 +118,9 @@ html {
 /* HEADER */
 .sticky-top {
 background: rgba(252, 252, 252, 1) !important;
+}
+
+.img-fluid {
 max-height:250px;
 }
 
