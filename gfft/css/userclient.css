@@ -124,6 +124,12 @@ background: rgba(252, 252, 252, 1) !important;
 max-height:250px;
 }
 
+/* Back to voting button */
+.nav-pills .nav-link {
+    border-radius: 0rem;
+    background-color: lightskyblue;
+}
+
 #_Topbar_ {
      background-size: 100% 100%;
 }
