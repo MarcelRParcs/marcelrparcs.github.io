@@ -125,8 +125,8 @@ max-height:250px;
 }
 
 /* Back to voting button */
-.nav-pills .nav-link {
-    border-radius: 0rem;
+#rankingPopupHTMLContents > div > ul > li {
+background-color:#67bcf5;
 }
 
 #_Topbar_ {
