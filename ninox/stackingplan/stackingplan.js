@@ -1,4 +1,5 @@
   /* Example data for development and testing */
+  var stackingplanJS = true;
   let data = {
     "name": "Office Building Wiesbaden",
     "address": "Wiesbadener Straße 99",
