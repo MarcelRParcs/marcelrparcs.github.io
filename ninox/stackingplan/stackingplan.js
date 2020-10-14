@@ -1,4 +1,5 @@
   /* Example data for development and testing */
+  /* Prevent from loading twice */ 
   if (!data) {
     var data = {
         "name": "Office Building Wiesbaden",
@@ -77,15 +78,20 @@
             }
         ]
     }
-}
+}   
 
-    /* Constants for the backgroundcolor of units in the table and the key backgroundcolor */
-    const vacantYearBackgroundColor = "rgb(235, 92, 52)";
-    const currentYearBackgroundColor = "rgb(235, 147, 52)";
-    const currentYearPlusOneBackgroundColor = "rgb(235, 186, 52)";
-    const currentYearPlusTwoBackgroundColor = "rgb(235, 217, 52)";
-    const currentYearPlusThreeAndMoreBackgroundColor = "rgb(165, 235, 52)";
 
+    /* Prevent from loading twice */ 
+    if(!constats) {
+        var constants = {
+            /* Constants for the backgroundcolor of units in the table and the key backgroundcolor */
+            vacantYearBackgroundColor:"rgb(235, 92, 52)",
+            currentYearBackgroundColor:"rgb(235, 147, 52)",
+            currentYearPlusOneBackgroundColor:"rgb(235, 186, 52)",
+            currentYearPlusTwoBackgroundColor:"rgb(235, 217, 52)",
+            currentYearPlusThreeAndMoreBackgroundColor:"rgb(165, 235, 52)"
+            }
+    }
     /* Set the header text of the page to the name of the building */
     function setStackingPlanHeader() {
         $("#stackingplan_header")[0].innerHTML = data.name;
