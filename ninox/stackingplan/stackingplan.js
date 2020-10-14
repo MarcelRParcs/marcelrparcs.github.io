@@ -82,7 +82,7 @@
 
 
     /* Prevent from loading twice */ 
-    if(!constats) {
+    if(!constants) {
         var constants = {
             /* Constants for the backgroundcolor of units in the table and the key backgroundcolor */
             vacantYearBackgroundColor:"rgb(235, 92, 52)",
