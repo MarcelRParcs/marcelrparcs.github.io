@@ -102,19 +102,19 @@
         var currentYear = new Date().getFullYear();
 
         $("#keyVacant").html("Vacant");
-        $("#keyVacant").css("background-color", vacantYearBackgroundColor);
+        $("#keyVacant").css("background-color", constants.vacantYearBackgroundColor);
 
         $("#keyCurrentYear").html(currentYear);
-        $("#keyCurrentYear").css("background-color", currentYearBackgroundColor);
+        $("#keyCurrentYear").css("background-color", constants.currentYearBackgroundColor);
 
         $("#keyCurrentYearPlusOne").html(currentYear + 1);
-        $("#keyCurrentYearPlusOne").css("background-color", currentYearPlusOneBackgroundColor);
+        $("#keyCurrentYearPlusOne").css("background-color", constants.currentYearPlusOneBackgroundColor);
 
         $("#keyCurrentYearPlusTwo").html(currentYear + 2);
-        $("#keyCurrentYearPlusTwo").css("background-color", currentYearPlusTwoBackgroundColor);
+        $("#keyCurrentYearPlusTwo").css("background-color", constants.currentYearPlusTwoBackgroundColor);
 
         $("#keyCurrentYearPlusThreeAndMore").html(currentYear + 3 + "+");
-        $("#keyCurrentYearPlusThreeAndMore").css("background-color", currentYearPlusThreeAndMoreBackgroundColor);
+        $("#keyCurrentYearPlusThreeAndMore").css("background-color", constants.currentYearPlusThreeAndMoreBackgroundColor);
     }
 
         /* Set the key infos [e.g. the info under the years] */
@@ -141,7 +141,7 @@
         for (floor of data.floors) {
             for (unit of floor.rentable_units)
                 /* Why 'unit.rented == "Ja"'? Ninox returns a String instead of a boolean in a function for some reason, e.g. "Ja" for true and "Nein" for false *. Could be a problem for different languages */
-                unit.html = `<td style="background-color:${unit.rented == "Ja" ? getColorForRentalExpiryYear(unit.rental_expiry_date) : vacantYearBackgroundColor}" class="col-md-${getUnitWidth(floor.gross_space_in_square_feet, unit.gross_space_in_square_feet)}">
+                unit.html = `<td style="background-color:${unit.rented == "Ja" ? getColorForRentalExpiryYear(unit.rental_expiry_date) :constants.vacantYearBackgroundColor}" class="col-md-${getUnitWidth(floor.gross_space_in_square_feet, unit.gross_space_in_square_feet)}">
                         <p>${unit.rented == "Ja" ? "Status: Rented" : "Status: Vacant"}</p> 
                         <p>${"Name: " + unit.name}</p>
                         <p>${unit.gross_space_in_square_feet + " sf"} ft</p>
@@ -199,10 +199,10 @@
         let currentYear = new Date().getFullYear();
         let expiryDate = parseDate(year).getFullYear();
         switch (expiryDate) {
-            case currentYear: return currentYearBackgroundColor;
-            case currentYear + 1: return currentYearPlusOneBackgroundColor;
-            case currentYear + 2: return currentYearPlusTwoBackgroundColor;
-            case expiryDate >= currentYear + 3: currentYearPlusThreeAndMoreBackgroundColor;
+            case currentYear: return constants.currentYearBackgroundColor;
+            case currentYear + 1: return constants.currentYearPlusOneBackgroundColor;
+            case currentYear + 2: return constants.currentYearPlusTwoBackgroundColor;
+            case expiryDate >= currentYear + 3: constants.currentYearPlusThreeAndMoreBackgroundColor;
         }
     }
     /* Creates a new Date object for a date string in the format "day.month.year" 
