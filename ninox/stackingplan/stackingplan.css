@@ -1,0 +1,13 @@
+   /*Turn off border around floor number in table */
+        .table-bordered th {
+            border: 0;
+        }
+
+        #stackingPlanTable {
+            /* Prevent the appearance of a scrolling bar for the thable */
+            max-width: 90%;
+        }
+
+        .keyRow {
+            max-width: 78%;
+        }
