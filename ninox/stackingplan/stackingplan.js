@@ -88,52 +88,54 @@
             vacantYearBackgroundColor:"rgb(235, 92, 52)",
             currentYearBackgroundColor:"rgb(235, 147, 52)",
             currentYearPlusOneBackgroundColor:"rgb(235, 186, 52)",
-            currentYearPlusTwoBackgroundColor:"rgb(235, 217, 52)",
-            currentYearPlusThreeAndMoreBackgroundColor:"rgb(165, 235, 52)"
+            currentYearPlusTwoBackgroundColor:"rgb(165, 235, 52)",
+            currentYearPlusThreeAndMoreBackgroundColor:"rgb(51, 204, 0)"
+
             }
-    }
-    /* Set the header text of the page to the name of the building */
-    function setStackingPlanHeader() {
-        $("#stackingplan_header")[0].innerHTML = data.name;
     }
 
     /* Set the year strings and background colors for the year keys [e.g. 2020, 2021...] */
     function setYearKeys() {
         var currentYear = new Date().getFullYear();
 
-        $("#keyVacant").html("Vacant");
+        $("#keyVacant").html(`<p class='text-center '>Vacant</p>`);
         $("#keyVacant").css("background-color", constants.vacantYearBackgroundColor);
 
-        $("#keyCurrentYear").html(currentYear);
+        $("#keyCurrentYear").html(`<p class='text-center'>${currentYear}</p>`);
         $("#keyCurrentYear").css("background-color", constants.currentYearBackgroundColor);
 
-        $("#keyCurrentYearPlusOne").html(currentYear + 1);
+        $("#keyCurrentYearPlusOne").html(`<p class='text-center'>${currentYear+1}</p>`);
         $("#keyCurrentYearPlusOne").css("background-color", constants.currentYearPlusOneBackgroundColor);
 
-        $("#keyCurrentYearPlusTwo").html(currentYear + 2);
+        $("#keyCurrentYearPlusTwo").html(`<p class='text-center'>${currentYear+2}</p>`);
         $("#keyCurrentYearPlusTwo").css("background-color", constants.currentYearPlusTwoBackgroundColor);
 
-        $("#keyCurrentYearPlusThreeAndMore").html(currentYear + 3 + "+");
+        $("#keyCurrentYearPlusThreeAndMore").html(`<p class='text-center'>${currentYear+1}+</p>`);
         $("#keyCurrentYearPlusThreeAndMore").css("background-color", constants.currentYearPlusThreeAndMoreBackgroundColor);
     }
 
         /* Set the key infos [e.g. the info under the years] */
         function setYearKeyInfo() {
 
-        $("#infoVacant").html("info");
+        $("#infoVacantListGroup").append("<li class='list-group-item'>Cras justo odio</li>");
+        $("#infoVacantListGroup").append("<li class='list-group-item'>Cras justo odio</li>");
+        $("#infoVacantListGroup").append("<li class='list-group-item'>Cras justo odio</li>");
 
-        $("#infoCurrentYear").html("info");
+        $("#infoCurrentYearListGroup").append("<li class='list-group-item'>Cras justo odio</li>");
 
-        $("#infoCurrentYearPlusOne").html("info");
+        $("#infoCurrentYearPlusOneListGroup").append("<li class='list-group-item'>Cras justo odio</li>");
 
-        $("#infoCurrentYearPlusTwo").html("info");
+        $("#infoCurrentYearPlusTwoListGroup").append("<li class='list-group-item'>Cras justo odio</li>");
 
-        $("#infoCurrentYearPlusThreeAndMore").html("info");
+        $("#infoCurrentYearPlusThreeAndMoreListGroup").append("<li class='list-group-item'>Cras justo odio</li>");
     }
 
     /* Set the metadata about the building in the right block next to the stacking plan */
     function setBuildingData() {
-        /* TODO */
+        $("#buildingDataListGroup").append(`<li class='list-group-item'><span class="buildingDataKey">Name:</span> ${data.name}</li>`);
+        $("#buildingDataListGroup").append(`<li class='list-group-item'><span class="buildingDataKey">Address:</span> ${data.address}</li>`);
+        $("#buildingDataListGroup").append(`<li class='list-group-item'><span class="buildingDataKey">City:</span> ${data.city}</li>`);
+        $("#buildingDataListGroup").append(`<li class='list-group-item'><span class="buildingDataKey">Gross Space in sq ft:</span> ${data.gross_space_in_squared_feet}</li>`);
     }
 
     /* Create the table data [<td>] for every unit and store it in the floor data for later retrieval */
@@ -144,7 +146,7 @@
                 unit.html = `<td style="background-color:${unit.rented == "Ja" ? getColorForRentalExpiryYear(unit.rental_expiry_date) :constants.vacantYearBackgroundColor}" class="col-md-${getUnitWidth(floor.gross_space_in_square_feet, unit.gross_space_in_square_feet)}">
                         <p>${unit.rented == "Ja" ? "Status: Rented" : "Status: Vacant"}</p> 
                         <p>${"Name: " + unit.name}</p>
-                        <p>${unit.gross_space_in_square_feet + " sf"} ft</p>
+                        <p>${unit.gross_space_in_square_feet} sq ft</p>
                         <p>${unit.rented == "Ja" ? "Rental expiry date: " + unit.rental_expiry_date : "No rental expiry date"}</p>
                         </td>`
         }
@@ -179,7 +181,7 @@
             floor.html = `<tr class="d-flex">
                         <th class="noBorder" scope="row">${floor.vertical_position}</th> 
                         ${unitsHTML}
-                        <th class="noBorder" scope="row">${floor.gross_space_in_square_feet} ft</th>
+                        <th class="noBorder" scope="row">${floor.gross_space_in_square_feet} sq ft <br> ${floor.utilization_in_percent} usage</th>
                     </tr>`;
         }
 
@@ -217,9 +219,9 @@
 
     /* Bootstrap function that wraps all work */
     function initTable() {
-        setStackingPlanHeader()
         setYearKeys();
         setYearKeyInfo();
+        setBuildingData();
         createUnitHTML();
         createFloorHTML();
         appendFloorsToTable();

@@ -1,13 +1,44 @@
-   /*Turn off border around floor number in table */
-        .table-bordered th {
-            border: 0;
-        }
+/*Turn off border around floor number in table */
 
-        #stackingPlanTable {
-            /* Prevent the appearance of a scrolling bar for the thable */
-            max-width: 90%;
-        }
+.table-bordered th {
+	border: 0;
+}
 
-        .keyRow {
-            max-width: 78%;
-        }
+#stackingPlanTable {
+	/* Prevent the appearance of a scrolling bar for the thable */
+	max-width: 89%;
+}
+
+.keyRow {
+	max-width: 77%;
+}
+
+body {
+	color: white;
+}
+
+h1,
+h2,
+h3,
+li,
+th {
+	color: black;
+}
+
+.keyDatesDiv {
+	padding-left: 0;
+	padding-right: 0;
+}
+
+#buildingDataDiv {
+	padding-left: 0;
+	padding-right: 0;
+}
+
+th {
+    white-space:nowrap;
+}
+
+.buildingDataKey {
+    font-weight: bold;
+}
