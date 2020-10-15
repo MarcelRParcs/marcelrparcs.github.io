@@ -6,11 +6,11 @@
 
 #stackingPlanTable {
 	/* Prevent the appearance of a scrolling bar for the thable */
-	max-width: 80%;
+	max-width: 85%;
 }
 
 .keyRow {
-	max-width: 70%;
+	max-width: 73%;
 }
 
 body {
