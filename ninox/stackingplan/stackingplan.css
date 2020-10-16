@@ -1,5 +1,4 @@
 /*Turn off border around floor number in table */
-
 .table-bordered th {
 	border: 0;
 }
