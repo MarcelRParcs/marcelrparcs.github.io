@@ -115,7 +115,7 @@ if (!constants) {
 }
 
 function storeNinoxObject(obj) {
-    window.dbdata = obk;
+    window.dbdata = JSON.parse(obj);
 }
 
 /* Set the year strings and background colors for the year keys [e.g. 2020, 2021...] */
