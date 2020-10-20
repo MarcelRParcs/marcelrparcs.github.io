@@ -31,7 +31,7 @@ function formatJSON(dbdata) {
         floor.utilization_in_percent = dbdata.floor_utilization_in_percent[i];
         floor.rentable_units = [];
         //Create rentable units
-        dbdata.unit_vertical_position.forEach(function(position, index) {
+        dbdata.vertical_position.forEach(function(position, index) {
             if (position == floor.floor_vertical_position) {
                 let unit = {};
                 unit.name = dbdata.unit_names[index];
@@ -43,10 +43,8 @@ function formatJSON(dbdata) {
                 unit.gross_space_in_square_feet = dbdata.gross_space_in_square_feet[index];
                 unit.rentable_space_in_square_feet = dbdata.unit_rentable_space_in_square_feet[index];
                 floor.rentable_units.push(unit);
-                console.log(unit);
             }
         });
-        console.log(floor);
         json.floors.push(floor);
     }
     return json;
