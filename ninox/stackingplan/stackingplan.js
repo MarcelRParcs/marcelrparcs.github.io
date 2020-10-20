@@ -110,7 +110,7 @@ function setBuildingData() {
 
 /* Create the table data [<td>] for every unit and store it in the floor data for later retrieval */
 function createUnitHTML() {
-    for (floor of data.floors) {
+    for (floor of window.dbdata.floors) {
         /* Save the used columns of the units so far. We need to get to 12 in the end */
         let totalColumnWidth = 0;
         /* Get the index of the last unit because we want to stretch its width to 12 */
