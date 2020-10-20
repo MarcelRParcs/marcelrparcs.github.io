@@ -33,6 +33,7 @@ function formatJSON(dbdata) {
         //Create rentable units
         dbdata.floor_vertical_position.forEach(function(position, index) {
             if (position == floor.floor_vertical_position) {
+                console.log("DDWQD");
                 let unit = {};
                 unit.name = dbdata.unit_names[index];
                 unit.unit_vertical_position = dbdata.unit_vertical_position[index];
