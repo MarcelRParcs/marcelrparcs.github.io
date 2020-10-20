@@ -267,3 +267,6 @@ function initTable() {
     createFloorHTML();
     appendFloorsToTable();
 };
+
+/* Script is loaded, call the inline defined function to get the ninox json object */
+callStoreNinoxObject();
