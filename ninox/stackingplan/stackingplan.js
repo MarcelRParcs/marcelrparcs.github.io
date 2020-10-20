@@ -1,106 +1,3 @@
-/* Example data for development and testing */
-/* Prevent from loading twice */
-if (!data) {
-    var data = {
-        "name": "Office Building Wiesbaden",
-        "address": "Wiesbadener Straße 99",
-        "city": "Wiesbaden",
-        "type": "Office",
-        "gross_space_in_square_feet": 1098,
-        "floors": [
-            {
-                "name": "Floor 1 in Building: Office Building Wiesbaden",
-                "gross_space_in_square_feet": 320,
-                "used_space_in_square_feet": 220,
-                "vertical_position": 1,
-                "utilization_in_percent": "69%",
-                "rentable_units": [
-                    {
-                        "name": "H&M",
-                        "unit_number": 103,
-                        "rented": "Yes",
-                        "rental_expiry_date": "05.08.2023",
-                        "renter_name": "Mrs. Kelley",
-                        "rental_rate": 2500,
-                        "gross_space_in_square_feet": 90,
-                        "rentable_space_in_square_feet": 80
-                    },
-                    {
-                        "name": "McDonalds",
-                        "unit_number": 102,
-                        "rented": "Yes",
-                        "rental_expiry_date": "07.05.2022",
-                        "renter_name": "Mr. John",
-                        "rental_rate": 3000,
-                        "gross_space_in_square_feet": 100,
-                        "rentable_space_in_square_feet": 30
-                    },
-                    {
-                        "name": "MediaMarkt",
-                        "unit_number": 100,
-                        "rented": "Yes",
-                        "rental_expiry_date": "11.12.2020",
-                        "renter_name": "Mr. Goods",
-                        "rental_rate": 3400,
-                        "gross_space_in_square_feet": 130,
-                        "rentable_space_in_square_feet": 124
-                    }
-                ]
-            },
-            {
-                "name": "Floor 2 in Building: Office Building Wiesbaden",
-                "gross_space_in_square_feet": 778,
-                "used_space_in_square_feet": 710,
-                "vertical_position": 2,
-                "utilization_in_percent": "91%",
-                "rentable_units": [
-                    {
-                        "name": "REWE",
-                        "unit_number": 105,
-                        "rented": "Yes",
-                        "rental_expiry_date": "10.09.2021",
-                        "renter_name": "Mr. Wilkinson",
-                        "rental_rate": 5000,
-                        "gross_space_in_square_feet": 200,
-                        "rentable_space_in_square_feet": 150
-                    },
-                    {
-                        "name": "LIDL",
-                        "unit_number": 112,
-                        "rented": "No",
-                        "rental_expiry_date": "10.09.2020",
-                        "renter_name": "Mr. Wilkinson",
-                        "rental_rate": 5000,
-                        "gross_space_in_square_feet": 132,
-                        "rentable_space_in_square_feet": 129
-                    },
-                    {
-                        "name": "Saturn",
-                        "unit_number": 104,
-                        "rented": "Yes",
-                        "rental_expiry_date": "06.03.2021",
-                        "renter_name": "Mrs. Erikson",
-                        "rental_rate": 4500,
-                        "gross_space_in_square_feet": 300,
-                        "rentable_space_in_square_feet": 290
-                    },
-                    {
-                        "name": "Kaufland",
-                        "unit_number": 165,
-                        "rented": "Yes",
-                        "rental_expiry_date": "06.03.2026",
-                        "renter_name": "Mrs. Erikson",
-                        "rental_rate": 2500,
-                        "gross_space_in_square_feet": 146,
-                        "rentable_space_in_square_feet": 141
-                    }
-                ]
-            }
-        ]
-    }
-}
-
-
 /* Prevent from loading twice */
 if (!constants) {
     var constants = {
@@ -114,8 +11,50 @@ if (!constants) {
     }
 }
 
+// Format the json data from ninox into a more suitable format
+function formatJSON(dbdata) {
+    let json = {}
+      json.name = dbdata.name;
+      json.address = dbdata.address;
+      json.city = dbdata.city;
+      json.type = dbdata.type;
+      json.gross_space_in_square_feet = dbdata.gross_space_in_square_feet;
+      json.floors = [];
+       
+        //Create floors
+        for(let i = 0; i < dbdata.floor_count;i++) {
+          let floor = {}
+                  floor.name = dbdata.floor_name[i];
+                  floor.floor_vertical_position = dbdata.floor_vertical_position[i];
+                          floor.floor_gross_space_in_square_feet = dbdata.floor_gross_space_in_square_feet[i];
+                         floor.floor_used_space_in_square_feet = dbdata.floor_used_space_in_square_feet[i];
+                          floor.floor_utilization_in_percent = dbdata.floor_utilization_in_percent[i];
+              floor.rentable_units = [];
+                //Create rentable units
+              dbdata.unit_vertical_position.forEach(function(position, index) {
+                if(position == floor.floor_vertical_position) {
+                    let unit = {};
+                      unit.name = dbdata.unit_names[index];
+                                      unit.unit_vertical_position = dbdata.unit_vertical_position[index];
+                                      unit.rented = dbdata.unit_rented[index];
+                                      unit.renter_name = dbdata.unit_renter_name[index];
+                      unit.unit_rental_expiry_date = new Date(dbdata.unit_rental_expiry_date[index]);
+                    unit.rental_rate = dbdata.unit_rental_rate[index];
+                      unit.gross_space_in_square_feet = dbdata.gross_space_in_square_feet[index];
+                                    unit.rentable_space_in_square_feet = dbdata.unit_rentable_space_in_square_feet[index];
+                    floor.rentable_units.push(unit);
+                }
+              });
+          
+              json.floors.push(floor);
+      }
+    return json;
+    
+  }
+
+  // Store the ninox json data globally to access it in the js script
 function storeNinoxObject(obj) {
-    window.dbdata = obj;
+    window.dbdata = formatJSON(JSON.parse(obj));
 }
 
 /* Set the year strings and background colors for the year keys [e.g. 2020, 2021...] */
