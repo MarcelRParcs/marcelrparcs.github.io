@@ -185,7 +185,7 @@ function appendFloorsToTable() {
 /* Return RGB color for given expiry date year */
 function getColorForRentalExpiryYear(year) {
     let currentYear = new Date().getFullYear();
-    let expiryDate = parseDate(year).getFullYear();
+    let expiryDate = year.getFullYear();
     if (expiryDate == currentYear) {
         return constants.currentYearBackgroundColor
     } else if (expiryDate == (currentYear + 1)) {
@@ -225,7 +225,7 @@ function getExpiryYearDistribution() {
     }
     for (floor of window.dbdata.floors) {
         for (unit of floor.rentable_units) {
-            let unitExpiryDateYear = parseDate(unit.rental_expiry_date).getFullYear();
+            let unitExpiryDateYear = unit.rental_expiry_date.getFullYear();
             // Vacant unit
             if (unit.rented == "No") {
                 distribution.vacant.count++;
