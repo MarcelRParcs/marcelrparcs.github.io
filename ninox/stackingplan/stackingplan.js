@@ -25,13 +25,13 @@ function formatJSON(dbdata) {
     for (let i = 0; i < dbdata.floor_count; i++) {
         let floor = {}
         floor.name = dbdata.floor_name[i];
-        floor.vertical_position = dbdata.floor_vertical_positions[i];
+        floor.vertical_position = dbdata.floor_vertical_position[i];
         floor.gross_space_in_square_feet = dbdata.floor_gross_space_in_square_feet[i];
         floor.used_space_in_square_feet = dbdata.floor_used_space_in_square_feet[i];
         floor.utilization_in_percent = dbdata.floor_utilization_in_percent[i];
         floor.rentable_units = [];
         //Create rentable units
-        dbdata.floor_vertical_positions.forEach(function(position, index) {
+        dbdata.floor_vertical_position.forEach(function(position, index) {
             if (position == floor.floor_vertical_position) {
                 let unit = {};
                 unit.name = dbdata.unit_names[index];
