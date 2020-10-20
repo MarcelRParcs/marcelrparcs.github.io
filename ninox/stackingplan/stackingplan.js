@@ -170,7 +170,7 @@ function createFloorHTML() {
                     </tr>`;
     }
 
-    data.floors.sort((floorPrev, floorNext) => floorNext.vertical_position - floorPrev.vertical_position);
+    window.dbdata.floors.sort((floorPrev, floorNext) => floorNext.vertical_position - floorPrev.vertical_position);
 
 }
 
