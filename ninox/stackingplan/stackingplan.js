@@ -129,7 +129,7 @@ function createUnitHTML() {
                         <p>${unit.rented == "Yes" ? "Status: Rented" : "Status: Vacant"}</p> 
                         <p>${"Name: " + unit.name}</p>
                         <p>${unit.gross_space_in_square_feet} sq ft</p>
-                        <p>${unit.rented == "Yes" ? "Rental expiry date: " + unit.rental_expiry_date : "No rental expiry date"}</p>
+                        <p>${unit.rented == "Yes" ? "Rental expiry date: " +  formatDate(unit.rental_expiry_date) : "No rental expiry date"}</p>
                         </td>`
         }
     }
@@ -251,6 +251,10 @@ function getExpiryYearDistribution() {
 function parseDate(date) {
     var parts = date.match(/(\d+)/g);
     return new Date(parts[2], parts[1] - 1, parts[0]);
+}
+/* Create date string in the format "day.month.year" */
+function formatDate(date) {
+    return date.getDate() + "." + date.getMonth() + "." + date.getFullYear();
 }
 
 
