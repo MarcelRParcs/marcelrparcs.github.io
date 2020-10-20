@@ -25,10 +25,10 @@ function formatJSON(dbdata) {
     for (let i = 0; i < dbdata.floor_count; i++) {
         let floor = {}
         floor.name = dbdata.floor_name[i];
-        floor.floor_vertical_position = dbdata.floor_vertical_position[i];
-        floor.floor_gross_space_in_square_feet = dbdata.floor_gross_space_in_square_feet[i];
-        floor.floor_used_space_in_square_feet = dbdata.floor_used_space_in_square_feet[i];
-        floor.floor_utilization_in_percent = dbdata.floor_utilization_in_percent[i];
+        floor.vertical_position = dbdata.floor_vertical_position[i];
+        floor.gross_space_in_square_feet = dbdata.floor_gross_space_in_square_feet[i];
+        floor.used_space_in_square_feet = dbdata.floor_used_space_in_square_feet[i];
+        floor.utilization_in_percent = dbdata.floor_utilization_in_percent[i];
         floor.rentable_units = [];
         //Create rentable units
         dbdata.unit_vertical_position.forEach(function(position, index) {
@@ -38,7 +38,7 @@ function formatJSON(dbdata) {
                 unit.unit_vertical_position = dbdata.unit_vertical_position[index];
                 unit.rented = dbdata.unit_rented[index];
                 unit.renter_name = dbdata.unit_renter_name[index];
-                unit.unit_rental_expiry_date = new Date(dbdata.unit_rental_expiry_date[index]);
+                unit.rental_expiry_date = new Date(dbdata.unit_rental_expiry_date[index]);
                 unit.rental_rate = dbdata.unit_rental_rate[index];
                 unit.gross_space_in_square_feet = dbdata.gross_space_in_square_feet[index];
                 unit.rentable_space_in_square_feet = dbdata.unit_rentable_space_in_square_feet[index];
