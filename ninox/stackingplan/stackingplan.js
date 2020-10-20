@@ -35,12 +35,12 @@ function formatJSON(dbdata) {
             if (floor.vertical_position == position) { // Unit is on the same floor
                 let unit = {};
                 unit.name = dbdata.unit_names[index];
-                unit.unit_vertical_position = dbdata.unit_vertical_position[index];
+                unit.vertical_position = dbdata.unit_vertical_position[index];
                 unit.rented = dbdata.unit_rented[index];
                 unit.renter_name = dbdata.unit_renter_name[index];
                 unit.rental_expiry_date = new Date(dbdata.unit_rental_expiry_date[index]);
                 unit.rental_rate = dbdata.unit_rental_rate[index];
-                unit.gross_space_in_square_feet = dbdata.gross_space_in_square_feet[index];
+                unit.gross_space_in_square_feet = dbdata.unit_gross_space_in_square_feet[index];
                 unit.rentable_space_in_square_feet = dbdata.unit_rentable_space_in_square_feet[index];
                 floor.rentable_units.push(unit);
             }
