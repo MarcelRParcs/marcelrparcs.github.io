@@ -268,5 +268,5 @@ function initTable() {
     appendFloorsToTable();
 };
 
-/* Script is loaded, call the inline defined function to get the ninox json object */
+/* Is just used for communication purposes. Notifies the nx script that this script is loaded by calling a function that is defined there. */
 callStoreNinoxObject();
