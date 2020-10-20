@@ -54,8 +54,7 @@ function formatJSON(dbdata) {
 
 /* Store the ninox json data globally to access it in the js script. After that, init the table */
 function storeNinoxObject(obj) {
-    console.log(obj);
-    window.dbdata = formatJSON(JSON.parse(obj));
+    window.dbdata = JSON.parse(obj);
     initTable();
 }
 
