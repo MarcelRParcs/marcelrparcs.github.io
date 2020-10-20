@@ -101,11 +101,11 @@ function setYearKeyInfo() {
 
 /* Set the metadata about the building in the right block next to the stacking plan */
 function setBuildingData() {
-    $("#buildingDataListGroup").append(`<li class='list-group-item'><span class="buildingDataKey">Name:</span> ${data.name}</li>`);
-    $("#buildingDataListGroup").append(`<li class='list-group-item'><span class="buildingDataKey">Type:</span> ${data.type}</li>`);
-    $("#buildingDataListGroup").append(`<li class='list-group-item'><span class="buildingDataKey">Address:</span> ${data.address}</li>`);
-    $("#buildingDataListGroup").append(`<li class='list-group-item'><span class="buildingDataKey">City:</span> ${data.city}</li>`);
-    $("#buildingDataListGroup").append(`<li class='list-group-item'><span class="buildingDataKey">Gross Space in sq ft:</span> ${data.gross_space_in_square_feet}</li>`);
+    $("#buildingDataListGroup").append(`<li class='list-group-item'><span class="buildingDataKey">Name:</span> ${window.dbdata.name}</li>`);
+    $("#buildingDataListGroup").append(`<li class='list-group-item'><span class="buildingDataKey">Type:</span> ${window.dbdata.type}</li>`);
+    $("#buildingDataListGroup").append(`<li class='list-group-item'><span class="buildingDataKey">Address:</span> ${window.dbdata.address}</li>`);
+    $("#buildingDataListGroup").append(`<li class='list-group-item'><span class="buildingDataKey">City:</span> ${window.dbdata.city}</li>`);
+    $("#buildingDataListGroup").append(`<li class='list-group-item'><span class="buildingDataKey">Gross Space in sq ft:</span> ${window.dbdata.gross_space_in_square_feet}</li>`);
 }
 
 /* Create the table data [<td>] for every unit and store it in the floor data for later retrieval */
