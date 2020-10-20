@@ -13,6 +13,7 @@ if (!constants) {
 
 // Format the json data from ninox into a more suitable format
 function formatJSON(dbdata) {
+    console.log(dbdata);
     let json = {}
     json.name = dbdata.name;
     json.address = dbdata.address;
@@ -32,8 +33,7 @@ function formatJSON(dbdata) {
         floor.rentable_units = [];
         //Create rentable units
         dbdata.floor_vertical_position.forEach(function(position, index) {
-            if (position == floor.floor_vertical_position) {
-                console.log("DDWQD");
+            if (floor.vertical_position == position) {
                 let unit = {};
                 unit.name = dbdata.unit_names[index];
                 unit.unit_vertical_position = dbdata.unit_vertical_position[index];
