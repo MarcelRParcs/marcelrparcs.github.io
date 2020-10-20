@@ -31,7 +31,7 @@ function formatJSON(dbdata) {
         floor.utilization_in_percent = dbdata.floor_utilization_in_percent[i];
         floor.rentable_units = [];
         //Create rentable units
-        dbdata.vertical_position.forEach(function(position, index) {
+        window.dbdata.vertical_position.forEach(function(position, index) {
             if (position == floor.floor_vertical_position) {
                 let unit = {};
                 unit.name = dbdata.unit_names[index];
