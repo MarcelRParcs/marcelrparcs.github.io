@@ -14,47 +14,48 @@ if (!constants) {
 // Format the json data from ninox into a more suitable format
 function formatJSON(dbdata) {
     let json = {}
-      json.name = dbdata.name;
-      json.address = dbdata.address;
-      json.city = dbdata.city;
-      json.type = dbdata.type;
-      json.gross_space_in_square_feet = dbdata.gross_space_in_square_feet;
-      json.floors = [];
-       
-        //Create floors
-        for(let i = 0; i < dbdata.floor_count;i++) {
-          let floor = {}
-                  floor.name = dbdata.floor_name[i];
-                  floor.floor_vertical_position = dbdata.floor_vertical_position[i];
-                          floor.floor_gross_space_in_square_feet = dbdata.floor_gross_space_in_square_feet[i];
-                         floor.floor_used_space_in_square_feet = dbdata.floor_used_space_in_square_feet[i];
-                          floor.floor_utilization_in_percent = dbdata.floor_utilization_in_percent[i];
-              floor.rentable_units = [];
-                //Create rentable units
-              dbdata.unit_vertical_position.forEach(function(position, index) {
-                if(position == floor.floor_vertical_position) {
-                    let unit = {};
-                      unit.name = dbdata.unit_names[index];
-                                      unit.unit_vertical_position = dbdata.unit_vertical_position[index];
-                                      unit.rented = dbdata.unit_rented[index];
-                                      unit.renter_name = dbdata.unit_renter_name[index];
-                      unit.unit_rental_expiry_date = new Date(dbdata.unit_rental_expiry_date[index]);
-                    unit.rental_rate = dbdata.unit_rental_rate[index];
-                      unit.gross_space_in_square_feet = dbdata.gross_space_in_square_feet[index];
-                                    unit.rentable_space_in_square_feet = dbdata.unit_rentable_space_in_square_feet[index];
-                    floor.rentable_units.push(unit);
-                }
-              });
-          
-              json.floors.push(floor);
-      }
-    return json;
-    
-  }
+    json.name = dbdata.name;
+    json.address = dbdata.address;
+    json.city = dbdata.city;
+    json.type = dbdata.type;
+    json.gross_space_in_square_feet = dbdata.gross_space_in_square_feet;
+    json.floors = [];
 
-  // Store the ninox json data globally to access it in the js script
+    //Create floors
+    for (let i = 0; i < dbdata.floor_count; i++) {
+        let floor = {}
+        floor.name = dbdata.floor_name[i];
+        floor.floor_vertical_position = dbdata.floor_vertical_position[i];
+        floor.floor_gross_space_in_square_feet = dbdata.floor_gross_space_in_square_feet[i];
+        floor.floor_used_space_in_square_feet = dbdata.floor_used_space_in_square_feet[i];
+        floor.floor_utilization_in_percent = dbdata.floor_utilization_in_percent[i];
+        floor.rentable_units = [];
+        //Create rentable units
+        dbdata.unit_vertical_position.forEach(function(position, index) {
+            if (position == floor.floor_vertical_position) {
+                let unit = {};
+                unit.name = dbdata.unit_names[index];
+                unit.unit_vertical_position = dbdata.unit_vertical_position[index];
+                unit.rented = dbdata.unit_rented[index];
+                unit.renter_name = dbdata.unit_renter_name[index];
+                unit.unit_rental_expiry_date = new Date(dbdata.unit_rental_expiry_date[index]);
+                unit.rental_rate = dbdata.unit_rental_rate[index];
+                unit.gross_space_in_square_feet = dbdata.gross_space_in_square_feet[index];
+                unit.rentable_space_in_square_feet = dbdata.unit_rentable_space_in_square_feet[index];
+                floor.rentable_units.push(unit);
+            }
+        });
+
+        json.floors.push(floor);
+    }
+    return json;
+
+}
+
+/* Store the ninox json data globally to access it in the js script. After that, init the table */
 function storeNinoxObject(obj) {
     window.dbdata = formatJSON(JSON.parse(obj));
+    initTable();
 }
 
 /* Set the year strings and background colors for the year keys [e.g. 2020, 2021...] */
@@ -124,7 +125,7 @@ function createUnitHTML() {
             }
             totalColumnWidth += unitWidth;
             /* Why 'unit.rented == "Yes"'? Ninox returns a String instead of a boolean in a function for some reason, although the source code declares a boolean e.g. "Yes" for true and "No" for false. The String also depends on the language, e.g.
-            *  in Germany "Ja" would be returned. For this reason i return the english strings "Yes" and "No" in the ninox function instead of true and false. Boolean would be much better for portability reasons though. */
+             *  in Germany "Ja" would be returned. For this reason i return the english strings "Yes" and "No" in the ninox function instead of true and false. Boolean would be much better for portability reasons though. */
             unit.html = `<td style="background-color:${unit.rented == "Yes" ? getColorForRentalExpiryYear(unit.rental_expiry_date) : constants.vacantYearBackgroundColor}" class="col-md-${unitWidth}">
                         <p>${unit.rented == "Yes" ? "Status: Rented" : "Status: Vacant"}</p> 
                         <p>${"Name: " + unit.name}</p>
@@ -156,7 +157,7 @@ function getUnitWidth(floorGrossSize, unitGrossSize) {
    After that sort the floors by their vertical position in reverse order, so the top floor is at the beginning
 */
 function createFloorHTML() {
-    for (floor of data.floors) {
+    for (floor of window.dbdata.floors) {
         //Jede td ist eine unit
         let unitsHTML = "";
         for (unit of floor.rentable_units) {
@@ -175,7 +176,7 @@ function createFloorHTML() {
 
 /* Append the floors to the tbody of the table */
 function appendFloorsToTable() {
-    for (floor of data.floors) {
+    for (floor of window.dbdata.floors) {
         $("#stackingplan_tbody").append(floor.html);
     }
 }
@@ -185,10 +186,15 @@ function appendFloorsToTable() {
 function getColorForRentalExpiryYear(year) {
     let currentYear = new Date().getFullYear();
     let expiryDate = parseDate(year).getFullYear();
-    if (expiryDate == currentYear) { return constants.currentYearBackgroundColor }
-    else if (expiryDate == (currentYear + 1)) { return constants.currentYearPlusOneBackgroundColor }
-    else if (expiryDate == (currentYear + 2)) { return constants.currentYearPlusTwoBackgroundColor }
-    else if (expiryDate >= (currentYear + 3)) { return constants.currentYearPlusThreeAndMoreBackgroundColor }
+    if (expiryDate == currentYear) {
+        return constants.currentYearBackgroundColor
+    } else if (expiryDate == (currentYear + 1)) {
+        return constants.currentYearPlusOneBackgroundColor
+    } else if (expiryDate == (currentYear + 2)) {
+        return constants.currentYearPlusTwoBackgroundColor
+    } else if (expiryDate >= (currentYear + 3)) {
+        return constants.currentYearPlusThreeAndMoreBackgroundColor
+    }
 }
 
 /* Return JSON Object where the keys are the years and the values an object with the the count of units and the total square feet */
@@ -217,7 +223,7 @@ function getExpiryYearDistribution() {
             squareFeet: 0
         },
     }
-    for (floor of data.floors) {
+    for (floor of window.dbdata.floors) {
         for (unit of floor.rentable_units) {
             let unitExpiryDateYear = parseDate(unit.rental_expiry_date).getFullYear();
             // Vacant unit
@@ -258,6 +264,3 @@ function initTable() {
     createFloorHTML();
     appendFloorsToTable();
 };
-
-/* All setup, initialize the table */
-initTable();
