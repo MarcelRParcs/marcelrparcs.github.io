@@ -32,8 +32,8 @@ function formatJSON(dbdata) {
         floor.utilization_in_percent = dbdata.floor_utilization_in_percent[i];
         floor.rentable_units = [];
         //Create rentable units
-        dbdata.floor_vertical_position.forEach(function(position, index) {
-            if (floor.vertical_position == position) {
+        dbdata.unit_vertical_position.forEach(function(position, index) { // each unit array like 'unit_names' has it's index mapped to the same index as 'unit_vertical_position'.
+            if (floor.vertical_position == position) { // Unit is on the same floor
                 let unit = {};
                 unit.name = dbdata.unit_names[index];
                 unit.unit_vertical_position = dbdata.unit_vertical_position[index];
