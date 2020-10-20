@@ -43,9 +43,10 @@ function formatJSON(dbdata) {
                 unit.gross_space_in_square_feet = dbdata.gross_space_in_square_feet[index];
                 unit.rentable_space_in_square_feet = dbdata.unit_rentable_space_in_square_feet[index];
                 floor.rentable_units.push(unit);
+                console.log(unit);
             }
         });
-
+        console.log(floor);
         json.floors.push(floor);
     }
     return json;
@@ -257,7 +258,6 @@ function parseDate(date) {
 
 /* Bootstrap function that wraps all work */
 function initTable() {
-    console.log(window.dbdata);
     setYearKeys();
     setYearKeyInfo();
     setBuildingData();
