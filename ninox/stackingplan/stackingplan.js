@@ -257,6 +257,7 @@ function parseDate(date) {
 
 /* Bootstrap function that wraps all work */
 function initTable() {
+    console.log(window.dbdata);
     setYearKeys();
     setYearKeyInfo();
     setBuildingData();
