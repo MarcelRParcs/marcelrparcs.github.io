@@ -13,7 +13,6 @@ if (!constants) {
 
 // Format the json data from ninox into a more suitable format
 function formatJSON(dbdata) {
-    console.log(dbdata);
     let json = {}
     json.name = dbdata.name;
     json.address = dbdata.address;
